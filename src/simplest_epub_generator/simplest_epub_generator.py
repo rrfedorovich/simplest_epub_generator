@@ -17,7 +17,6 @@ class Chapter:
         self,
         title: str,
         text: str,
-        images: List[Path] = [],
         is_html: bool = False,
         lang: str = "eng",
     ) -> None:
@@ -27,18 +26,14 @@ class Chapter:
         Parameters:
             title: str - chapter title.
             text: str - chapter text.
-            images: List[Path] = [] - list of image pathes.
             is_html: bool = False - whether the title and text are in HTML format.
             lang: str - language of the chapter.
         """
-        self.is_html: bool = is_html
-        self.images_pathes: List[Path] = images
         self.lang: str = lang
-
-        self.name: str = title
+        self.title: str = title
         self.html_content: str = ""
         if is_html:
-            self.name = self.remove_tags(title)
+            self.title = self.remove_tags(title)
             self.html_content = title + text
         else:
             self.html_content = f"<h1>{title}</h1>"
@@ -90,7 +85,7 @@ class Epub:
         self._epub_chapters: List[epub.EpubHtml] = []
         self._new_image_paths: dict = dict()
 
-    def generate_meta(self):
+    def _generate_meta(self):
         """Generate metadata."""
         random.seed(self.book_name)
         self._book.set_identifier(f"id{random.randint(0, 999999):0>6}")
@@ -98,7 +93,7 @@ class Epub:
         self._book.set_language(self.lang)
         self._book.add_author(self.author)
 
-    def add_chapter_images(self, chapter: Chapter) -> None:
+    def _add_chapter_images(self, chapter: Chapter) -> None:
         """
         Add chapter images to the book.
 
@@ -132,9 +127,9 @@ class Epub:
         Parameters:
             chapter: Chapter - the book chapter.
         """
-        self.add_chapter_images(chapter)
+        self._add_chapter_images(chapter)
         epub_chapter: epub.EpubHtml = epub.EpubHtml(
-            title=chapter.name, file_name=f"{chapter.name}.xhtml", lang=chapter.lang
+            title=chapter.title, file_name=f"{chapter.title}.xhtml", lang=chapter.lang
         )
         epub_chapter.content = chapter.html_content
         self._epub_chapters.append(epub_chapter)
@@ -162,7 +157,7 @@ class Epub:
         Parameters:
             path: Path - the path to the file.
         """
-        self.generate_meta()
+        self._generate_meta()
         # Title
         self._book.toc = self._epub_links
         # Add NavMap (for EPUB3)
