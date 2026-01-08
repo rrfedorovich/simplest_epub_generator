@@ -23,7 +23,7 @@ class TestEpub(unittest.TestCase):
 
     def test_run(self):
         """Test writing to an epub-file."""
-        output_file_path = Path("./tests/test_data/test_new.epub")
+        output_file_path = Path("./tests/test_data/sub_dir/test_new.epub")
         test_file_path = Path("./tests/test_data/test.epub")
         
         ch1 = Chapter(
@@ -49,3 +49,4 @@ class TestEpub(unittest.TestCase):
             self.read_epub(test_file_path), self.read_epub(output_file_path)
         )
         os.remove(output_file_path)
+        output_file_path.parent.rmdir()

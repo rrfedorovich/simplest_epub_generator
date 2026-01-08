@@ -177,4 +177,5 @@ class Epub:
         # Spine - sequence of items.
         self._book.spine = [nav] + self._epub_chapters
         # Save file.
+        path.parent.mkdir(exist_ok=True, parents=True)
         epub.write_epub(path, self._book, {})
