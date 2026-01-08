@@ -75,16 +75,16 @@ A class representing a chapter in an EPUB book.
 
 #### Constructor parameters
 
-- `title` (str): Title of the chapter.
-- `text` (str): Text content of the chapter.
-- `is_html` (bool, optional): Flag indicating if `title` and `text` contain HTML markup. Defaults to `False`.
-- `lang` (str, optional): Language of the chapter. Defaults to `"eng".`
+- `title (str)`: Title of the chapter.
+- `text (str)`: Text content of the chapter.
+- `is_html (bool, optional)`: Flag indicating if `title` and `text` contain HTML markup. Defaults to `False`.
+- `lang (str, optional)`: Language of the chapter. Defaults to `"eng".`
 
 #### Class attributes
 
-- `self.title` (str): Title of the chapter.
-- `self.html_content` (str): A variable containing the title and text in HTML format.
-- `self.lang` (str): Language of the chapter.
+- `self.title (str)`: Title of the chapter.
+- `self.html_content (str)`: A variable containing the title and text in HTML format.
+- `self.lang (str)`: Language of the chapter.
 
 #### Methods
 
@@ -99,15 +99,15 @@ A class for creating and managing an EPUB book.
 
 #### Constructor parameters
 
-- `book_name` (str): Name of the book.
-- `lang` (str, optional): Language of the book. Defaults to `"eng".`
-- `author` (str, optional): Author of the book. Defaults to an empty string.
+- `book_name (str)`: Name of the book.
+- `lang (str, optional)`: Language of the book. Defaults to `"eng"`.
+- `author (str, optional)`: Author of the book. Defaults to an empty string.
 
 #### Class attributes
 
-- `self.book_name` (str): Name of the book.
-- `self.lang` (str): Language of the book.
-- `self.author` (str): Author of the book.
+- `self.book_name (str)`: Name of the book.
+- `self.lang (str)`: Language of the book.
+- `self.author (str)`: Author of the book.
 
 #### Methods
 
@@ -119,4 +119,4 @@ A class for creating and managing an EPUB book.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/rrfedorovich/simplest_epub_generator/blob/master/LICENSE) file for details.
