@@ -16,7 +16,6 @@ class TestEpub(unittest.TestCase):
         answer: str = ""
         book = epub.read_epub(file_path)
         for item in book.get_items():
-            print(item.get_name())
             answer += f"\n--- {item.get_name()} ---"
             answer += item.get_content().decode("utf-8", errors="ignore")
         return answer

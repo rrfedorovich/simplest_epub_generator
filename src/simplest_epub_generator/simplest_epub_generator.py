@@ -84,6 +84,8 @@ class Epub:
         self._epub_links: List[epub.Link] = []
         self._epub_chapters: List[epub.EpubHtml] = []
         self._new_image_paths: dict = dict()
+        
+        self.chapter_count: int = 0
 
     def _generate_meta(self):
         """Generate metadata."""
@@ -129,7 +131,7 @@ class Epub:
         """
         self._add_chapter_images(chapter)
         epub_chapter: epub.EpubHtml = epub.EpubHtml(
-            title=chapter.title, file_name=f"{chapter.title}.xhtml", lang=chapter.lang
+            title=chapter.title, file_name=f"{self.chapter_count}_{chapter.title}.xhtml", lang=chapter.lang
         )
         epub_chapter.content = chapter.html_content
         self._epub_chapters.append(epub_chapter)
@@ -139,6 +141,7 @@ class Epub:
             epub_chapter.file_name, epub_chapter.title, epub_chapter.title
         )
         self._epub_links.append(epub_link)
+        self.chapter_count += 1
 
     def add_chapters(self, chapters: List[Chapter]) -> None:
         """
