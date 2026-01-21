@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "simplest_epub_generator"
-version = "0.1.3"
+version = "0.1.4"
 authors = [{ name = "rrfedorovich", email = "rrfedorovich@gmail.com" }]
 description = "A simplest EPUB file generator with image support."
 readme = "README.md"

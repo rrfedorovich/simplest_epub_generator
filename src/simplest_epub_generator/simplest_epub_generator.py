@@ -169,10 +169,11 @@ class Epub:
             f'<li><a href="{epub_link.href}">{epub_link.title}</a></li>'
             for epub_link in self._epub_links
         ]
+        nav_items_str = '\n'.join(nav_items)
         nav.content = f"""
         <nav epub:type="toc">
             <ol>
-                {'\n'.join(nav_items)}
+                {nav_items_str}
             </ol>
         </nav>
         """
